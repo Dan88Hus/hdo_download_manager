@@ -1,5 +1,7 @@
 // This file is created for antry point of Electron
 const {app, BrowserWindow} = require('electron');
+const url = require('url');
+const path = require('path');
 
 // Creation of the mainWindow with specified WxH 
 function createWindow() {
@@ -11,9 +13,18 @@ function createWindow() {
         },
     });
 
-    // to load window in specified url
-    mainWindow.loadURL(`http://${process.env.HOST || 'localhost'}:${process.env.PORT || 3000}`);
+    // to load window in specified file instead of webPage
+    mainWindow.loadURL(url.format({
+      pathname: path.join(__dirname, './build/index.html'),
+      protocol: 'file:',
+      slashes: true
+    }));
+    
+    // mainWindow.on('closed', () => {
+    //   mainWindow = null;
+    // });
 }
+
 
 // to lunch application
 app.on('ready',() => {
@@ -22,3 +33,15 @@ app.on('ready',() => {
     // Create window
     createWindow();
 });
+
+app.on('window-all-closed', () => {
+    if (process.platform !== 'darwin') {
+      app.quit();
+    }
+  });
+  
+  app.on('activate', () => {
+    if (mainWindow === null) {
+      createWindow();
+    }
+  });
