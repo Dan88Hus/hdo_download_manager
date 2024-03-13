@@ -57,6 +57,7 @@ export const pauseAction = (id, gid) => async (dispatch, getState) => {
 }
 
 export const purgeLocalStorage = () => async (dispatch, getState) => {
+// used in TaskButtons.js
 
     dispatch({
         type: "PURGELOCALSTORAGE",
@@ -130,7 +131,7 @@ export const unPauseAllAction = (id, gid) => async (dispatch, getState) => {
 }
 
 export const forcePauseAllAction = (id, gid) => async (dispatch, getState) => {
-    
+// used in TaskButtons.js
     let data = `{"id":"${id}","jsonrpc":"2.0","method": "aria2.forcePauseAll", "params": ["${gid}"]}`;
     let config = {
         method: 'post',
