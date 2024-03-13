@@ -3,6 +3,7 @@ import './App.css';
 import {useSelector} from 'react-redux'
 import TaskButtons from './components/TaskButtons';
 import ListHistory from './components/ListHistory';
+import InputLink from './components/inputLink';
 
 
 
@@ -10,6 +11,7 @@ function App() {
 const uri = useSelector(state => state.uri);
 
   return (
+    
     <div className='container-fluid'>
       <div className='row'>
         <h3 className='text-center mt-2'> Download Manager</h3>
@@ -18,9 +20,14 @@ const uri = useSelector(state => state.uri);
         <div className='row'>
           <TaskButtons/>
         </div>
-        {/* input Link */}
+        {/* TaskButtons */}
 
-        {/* List Hostory */}
+        {/* input Link */}
+        <div className='row'>
+          <InputLink/>
+        </div>
+
+        {/* List History */}
         
         <table className="table table-striped">
           <thead>
