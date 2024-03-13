@@ -2,8 +2,7 @@
 
 import axios from 'axios'
 
-export const taskReducer = (state = [], action) => {
-    /*    
+export const taskReducer = (state = [], action) => {   
     switch (action.type) {
         case "ADDURI":
             return [...state, action.payload]
@@ -49,6 +48,5 @@ export const taskReducer = (state = [], action) => {
 
     }
 
-    **/
-   return [];
+  
 }
