@@ -1,3 +1,4 @@
+// this components will be used at top of the screen
 import React from "react";
 import { forcePauseAllAction, purgeLocalStorage } from "../store/actions/taskAction";
 import { useDispatch } from "react-redux";
