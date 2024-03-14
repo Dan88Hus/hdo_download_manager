@@ -13,9 +13,9 @@ function ListHistory({uriMapped}){
      * re-runs every 15sn to update
      */
     useEffect( () => {
-        // const interval = setInterval(() => {
+        const interval = setInterval(() => {
             dispatch(tellStatus())
-        // },15000);
+        },15000);
     },[]);
 
     const handlePause = (uriMapped) =>{

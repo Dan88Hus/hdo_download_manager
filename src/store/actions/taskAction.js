@@ -50,22 +50,20 @@ export const pauseAction = (id, gid) => async (dispatch, getState) => {
         data: data
     };
     const getState2 = getState();
-    console.log("getState2 ", getState2.uri[0].status)
     /**
      * if status is still active as its async operation in redux
      * it will send pause request
      */
     if (getState2.uri[0].status === 'active'){
-        // axios(config)
-        //     .then(function (response) {
-        //         // console.log(JSON.stringify(response.data));
-        //         dispatch({
-        //             type: "PAUSE",
-        //         })
-        //     })
-        //     .catch(function (error) {
-        //         console.log(error);
-        //     });
+        axios(config)
+            .then(function (response) {
+                dispatch({
+                    type: "PAUSE",
+                })
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     } else {
         return true;
     }
