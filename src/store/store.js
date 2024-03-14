@@ -4,7 +4,7 @@ import {taskReducer} from './reducers/taskReducer';
 import {persistStore, persistReducer} from 'redux-persist';
 import storage from 'redux-persist/lib/storage'
 
-// identifies the state 
+// identifies the state slices
 const reducer = combineReducers({
     uri:taskReducer
 });

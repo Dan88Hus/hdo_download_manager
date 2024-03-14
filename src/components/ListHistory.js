@@ -1,11 +1,13 @@
 import React from 'react';
 
-function ListHistory(uriMapped){
+function ListHistory({uriMapped}){
+    //uriMaped is taken as object
+
     return (
         <React.Fragment>
             <tr>
-                <th scope='row'>U.gid</th>
-                <td>u.status</td>
+                <th scope='row'>{uriMapped.gid}</th>
+                <td>{uriMapped.status}</td>
                 <td className='text-center'>u.progress</td>
                 <td>u.path</td>
             </tr>

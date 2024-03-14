@@ -1,7 +1,12 @@
 import axios from "axios";
 
 export const addUriAction = (link) => async (dispatch, getState) => {
-    let data = `{"id": "${Math.floor(Math.random() * 1000000000)}","jsonrpc":"2.0","method": "aria2.addUri", "params": [["${link}"]]}`;
+    /*
+    InputLink.js will use it to add URI for starting download
+    id is assigned
+    */
+    let data = `{"id": "${Math.floor(Math.random() * 1000)}","jsonrpc":"2.0","method": "aria2.addUri", "params": [["${link}"]]}`;
+
     let config = {
         method: 'post',
         url: 'http://127.0.0.1:6800/jsonrpc',
