@@ -6,7 +6,7 @@ const path = require('path');
 // Creation of the mainWindow with specified WxH 
 function createWindow() {
     const mainWindow = new BrowserWindow({
-        width: 800,
+        width: 1200,
         height: 600,
         webPreferences: {
             nodeIntegration: true,
