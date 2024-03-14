@@ -1,14 +1,26 @@
 
 import './App.css';
-import {useSelector} from 'react-redux'
+import {useSelector, useDispatch} from 'react-redux'
+import {unPauseAllAction} from './store/actions/taskAction';
 import TaskButtons from './components/TaskButtons';
 import ListHistory from './components/ListHistory';
 import InputLink from './components/inputLink';
+import { useEffect } from 'react';
 
 
 
 function App() {
-const uri = useSelector(state => state.uri);
+
+  const uri = useSelector(state => state.uri);
+  const dispatch = useDispatch();
+
+  useEffect(() =>{
+  /**
+  * useEffect is will be used to resume all task as program starts
+  * 0,0 is dummy data as rpc does not need id, gid
+  */
+    dispatch(unPauseAllAction(0,0))
+  },[])
 
   return (
     

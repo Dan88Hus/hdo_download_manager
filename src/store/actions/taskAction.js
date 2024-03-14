@@ -123,6 +123,9 @@ export const forceRemoveAction = (id, gid) => async (dispatch, getState) => {
 }
 
 export const unPauseAllAction = (id, gid) => async (dispatch, getState) => {
+    /**
+     * This function will be used to start all download at the beginning
+     */
     let data = `{"id":"${id}","jsonrpc":"2.0","method": "aria2.unpauseAll", "params": ["${gid}"]}`;
     let config = {
         method: 'post',
