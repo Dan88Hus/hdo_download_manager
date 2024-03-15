@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import {forceRemoveAction, pauseAction, tellStatus, unPauseAction} from '../store/actions/taskAction'
 import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
 
 function ListHistory({uriMapped}){
     //uriMaped is taken as object
@@ -10,7 +11,7 @@ function ListHistory({uriMapped}){
 
     /**
      * Status, progress and path comes from tellStatus Dispatch
-     * re-runs every 15sn to update
+     * re-runs every 5sn to update
      */
     useEffect( () => {
         const interval = setInterval(() => {
@@ -43,7 +44,20 @@ function ListHistory({uriMapped}){
     }
 
     const handleStop = (uriMapped) =>{
-        dispatch(forceRemoveAction(uriMapped.id, uriMapped.gid))
+        /**
+         * it will remove iff the status is active
+         */
+        console.log("uriMapped: ", uriMapped);
+        if (uriMapped.status === "active"){
+            dispatch(forceRemoveAction(uriMapped.id, uriMapped.gid));
+        } else {
+            /**
+             * toastify message in here 
+             * "must be in 'active' state "
+             */
+            toast.error("State must be 'active' !")
+            return true;
+        }
     }
 
     return (
@@ -59,7 +73,6 @@ function ListHistory({uriMapped}){
                 <td><button className='btn btn-light' onClick={(() => handleResume(uriMapped))}><i className="bi bi-play-fill h6"></i></button></td>
                 {/* Button stop */}
                 <td><button className='btn btn-light' onClick={(() => handleStop(uriMapped))}><i className="bi bi-stop-circle h6"></i></button></td>
-
             </tr>
         </React.Fragment>
     )

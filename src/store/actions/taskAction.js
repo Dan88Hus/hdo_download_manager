@@ -1,4 +1,20 @@
 import axios from "axios";
+const postMethod = 'post';
+const aria2Url = 'http://127.0.0.1:6800/jsonrpc';
+const headers = {'Content-Type': 'text/plain'};
+
+const dataParam = (id, aria2Fn, gid) =>{
+    /**
+     * let data = `{"id":"${id}","jsonrpc":"2.0","method": "aria2.pause", "params": ["${gid}"]}`;
+     * let data = `{"id":"${id}","jsonrpc":"2.0","method": "aria2.unpause", "params": ["${gid}"]}`;
+     * let data = `{"id":"${id}","jsonrpc":"2.0","method": "aria2.forceRemove", "params": ["${gid}"]}`;
+     * let data = `{"id":"${id}","jsonrpc":"2.0","method": "aria2.unpauseAll", "params": ["${gid}"]}`;
+     * let data = `{"id":"${id}","jsonrpc":"2.0","method": "aria2.forcePauseAll", "params": ["${gid}"]}`;
+     */
+    let data = `{"id":"${id}","jsonrpc":"2.0","method": "${aria2Fn}", "params": ["${gid}"]}`;
+    return data;
+}  
+
 
 export const addUriAction = (link) => async (dispatch, getState) => {
     /*
@@ -8,17 +24,14 @@ export const addUriAction = (link) => async (dispatch, getState) => {
     let data = `{"id": "${Math.floor(Math.random() * 1000)}","jsonrpc":"2.0","method": "aria2.addUri", "params": [["${link}"]]}`;
 
     let config = {
-        method: 'post',
-        url: 'http://127.0.0.1:6800/jsonrpc',
-        headers: {
-            'Content-Type': 'text/plain'
-        },
+        method: postMethod,
+        url: aria2Url,
+        headers: headers,
         data: data
     };
     
     await axios(config)
         .then(function (response) {
-            // console.log(response.data.id);
             dispatch({
                 type: "ADDURI",
                 payload: {
@@ -40,21 +53,20 @@ export const tellStatus = () => async (dispatch) => {
 
 
 export const pauseAction = (id, gid) => async (dispatch, getState) => {
-    let data = `{"id":"${id}","jsonrpc":"2.0","method": "aria2.pause", "params": ["${gid}"]}`;
+    let data = dataParam(id,"aria2.pause",gid);
+
     let config = {
-        method: 'post',
-        url: 'http://127.0.0.1:6800/jsonrpc',
-        headers: {
-            'Content-Type': 'text/plain'
-        },
+        method: postMethod,
+        url: aria2Url,
+        headers: headers,
         data: data
     };
-    const getState2 = getState();
+    const getStateStatus = getState();
     /**
      * if status is still active as its async operation in redux
      * it will send pause request
      */
-    if (getState2.uri[0].status === 'active'){
+    if (getStateStatus.uri[0].status === 'active'){
         axios(config)
             .then(function (response) {
                 dispatch({
@@ -79,13 +91,11 @@ export const purgeLocalStorage = () => async (dispatch, getState) => {
 }
 
 export const unPauseAction = (id, gid) => async (dispatch, getState) => {
-    let data = `{"id":"${id}","jsonrpc":"2.0","method": "aria2.unpause", "params": ["${gid}"]}`;
+    let data = dataParam(id,"aria2.unpause",gid);
     let config = {
-        method: 'post',
-        url: 'http://127.0.0.1:6800/jsonrpc',
-        headers: {
-            'Content-Type': 'text/plain'
-        },
+        method: postMethod,
+        url: aria2Url,
+        headers: headers,
         data: data
     };
     axios(config)
@@ -101,13 +111,11 @@ export const unPauseAction = (id, gid) => async (dispatch, getState) => {
 }
 
 export const forceRemoveAction = (id, gid) => async (dispatch, getState) => {
-    let data = `{"id":"${id}","jsonrpc":"2.0","method": "aria2.forceRemove", "params": ["${gid}"]}`;
+    let data = dataParam(id,"aria2.forceRemove",gid);
     let config = {
-        method: 'post',
-        url: 'http://127.0.0.1:6800/jsonrpc',
-        headers: {
-            'Content-Type': 'text/plain'
-        },
+        method: postMethod,
+        url: aria2Url,
+        headers: headers,
         data: data
     };
     axios(config)
@@ -126,13 +134,11 @@ export const unPauseAllAction = (id, gid) => async (dispatch, getState) => {
     /**
      * This function will be used to start all download at the beginning
      */
-    let data = `{"id":"${id}","jsonrpc":"2.0","method": "aria2.unpauseAll", "params": ["${gid}"]}`;
+    let data = dataParam(id,"aria2.unpauseAll",gid);
     let config = {
-        method: 'post',
-        url: 'http://127.0.0.1:6800/jsonrpc',
-        headers: {
-            'Content-Type': 'text/plain'
-        },
+        method: postMethod,
+        url: aria2Url,
+        headers: headers,
         data: data
     };
     axios(config)
@@ -149,13 +155,11 @@ export const unPauseAllAction = (id, gid) => async (dispatch, getState) => {
 
 export const forcePauseAllAction = (id, gid) => async (dispatch, getState) => {
 // used in TaskButtons.js
-    let data = `{"id":"${id}","jsonrpc":"2.0","method": "aria2.forcePauseAll", "params": ["${gid}"]}`;
+    let data = dataParam(id,"aria2.forcePauseAll",gid);
     let config = {
-        method: 'post',
-        url: 'http://127.0.0.1:6800/jsonrpc',
-        headers: {
-            'Content-Type': 'text/plain'
-        },
+        method: postMethod,
+        url: aria2Url,
+        headers: headers,
         data: data
     };
     axios(config)

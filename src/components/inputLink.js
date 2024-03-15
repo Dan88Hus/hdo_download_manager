@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addUriAction } from "../store/actions/taskAction";
+import {toast} from 'react-toastify'
 
 function InputLink() {
 
@@ -11,6 +12,7 @@ function InputLink() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         await dispatch(addUriAction(link));
+        toast.success("Trying to Download")
     }
 
     return (

@@ -1,5 +1,5 @@
-
-import './App.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import {useSelector, useDispatch} from 'react-redux'
 import {unPauseAllAction} from './store/actions/taskAction';
 import TaskButtons from './components/TaskButtons';
@@ -24,7 +24,9 @@ function App() {
 
   return (
     
+
     <div className='container-fluid'>
+      <ToastContainer/>
       <div className='row'>
         <h3 className='text-center mt-2'> Download Manager</h3>
       </div>
