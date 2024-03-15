@@ -28,7 +28,7 @@ function App() {
     <div className='container-fluid'>
       <ToastContainer/>
       <div className='row'>
-        <h3 className='text-center mt-2'> Download Manager</h3>
+        <h3 className='text-center mt-2'>HDO Download Manager</h3>
       </div>
       <div className='card'>
         <div className='row'>
