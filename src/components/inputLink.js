@@ -11,8 +11,13 @@ function InputLink() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await dispatch(addUriAction(link));
-        toast.success("Trying to Download")
+        if (link.length != 0){
+            await dispatch(addUriAction(link));
+            setLink('');
+            toast.success("Downloading");
+        } else {
+            toast.warning("Link field is Empty!")
+        }
     }
 
     return (
@@ -22,6 +27,7 @@ function InputLink() {
                     <input type="url" className="form-control" 
                         placeholder="Enter the Link"
                         onChange={(e) => setLink(e.target.value)}
+                        value={link}
                         >
                     </input>
                 </div>

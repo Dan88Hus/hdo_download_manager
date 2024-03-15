@@ -5,8 +5,6 @@ import { toast } from 'react-toastify';
 
 function ListHistory({uriMapped}){
     //uriMaped is taken as object
-    let count = 0; // is used to stop useEffect
-
     const dispatch = useDispatch();
 
     /**
