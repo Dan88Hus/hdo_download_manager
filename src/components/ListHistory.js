@@ -25,6 +25,7 @@ function ListHistory({uriMapped}){
          */
         if (uriMapped.status === "active"){
             dispatch(pauseAction(uriMapped.id,uriMapped.gid));
+            toast.info("Paused");
             return false;
         } else if(uriMapped.status === "paused"){
             return false;
@@ -37,6 +38,7 @@ function ListHistory({uriMapped}){
     const handleResume = (uriMapped) =>{
         if (uriMapped.status === 'paused'){
             dispatch(unPauseAction(uriMapped.id,uriMapped.gid));
+            toast.success("Resuming")
         }
         return true;
     }
@@ -45,15 +47,15 @@ function ListHistory({uriMapped}){
         /**
          * it will remove iff the status is active
          */
-        console.log("uriMapped: ", uriMapped);
         if (uriMapped.status === "active"){
             dispatch(forceRemoveAction(uriMapped.id, uriMapped.gid));
+            toast.info("Removed");
         } else {
             /**
              * toastify message in here 
              * "must be in 'active' state "
              */
-            toast.error("State must be 'active' !")
+            toast.error("State must be 'active' !");
             return true;
         }
     }
