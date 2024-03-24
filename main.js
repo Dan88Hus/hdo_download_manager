@@ -3,6 +3,7 @@ const {app, BrowserWindow} = require('electron');
 const url = require('url');
 const path = require('path');
 
+
 // Creation of the mainWindow with specified WxH 
 function createWindow() {
     const mainWindow = new BrowserWindow({
