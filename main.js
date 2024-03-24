@@ -15,6 +15,13 @@ function createWindow() {
         height: 600,
         webPreferences: {
             nodeIntegration: true,
+            worldSafeExecuteJavascript: true,
+            contextIsolation: false,
+            webSecurity: true,
+            enableRemoteModule: true,
+            sandbox: false,
+            contentSecurityPolicy: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval';"
+
         },
     });
 
@@ -28,6 +35,9 @@ function createWindow() {
     // mainWindow.on('closed', () => {
     //   mainWindow = null;
     // });
+
+        // for dev tools
+        mainWindow.webContents.openDevTools();
 }
 
 
@@ -45,6 +55,8 @@ app.on('ready',() => {
 
     // Create window
     createWindow();
+
+
 });
 
 app.on('window-all-closed', () => {

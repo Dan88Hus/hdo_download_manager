@@ -7,11 +7,16 @@ function reportHistoryWindow() {
         height: 400,
         webPreferences: {
             nodeIntegration: true,
+            contentSecurityPolicy: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval';"
+            
         },
     });
 
     // to load window in specified file instead of webPage
+
     mainWindow.loadFile('reportHistory.html');
+
+    mainWindow.webContents.openDevTools();
 }
 
 const template = [

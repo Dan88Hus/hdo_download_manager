@@ -23,7 +23,7 @@ export const taskReducer = (state = [], action) => {
                             let progressPercent = ((response.data.result.completedLength / response.data.result.totalLength)*100).toFixed(2)
                             // Object.assign(target,source);
                             Object.assign(task, {status: response.data.result.status, progress: progressPercent, path: response.data.result.files[0].path});
-                        }
+                        } else { return false}
                 })
                     .catch(function (error) {
                         console.log(error);

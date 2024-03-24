@@ -5,9 +5,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="script-src 'self' localhost" />
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' localhost 'unsafe-inline'" />
     <link rel="stylesheet" type="text/css" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
     <title class="text-center">Report</title>
+    <script type="text/javascript" src="./menu/report.js"></script>
+    <script>
+        console.log('reportHistory.html loaded');
+    </script>
 </head>
 
 <body>
@@ -15,7 +19,7 @@
     <table class="table table-striped">
         <thead id="thead">
             <tr>
-                <th scope="col">Satus</th>
+                <th scope="col">Status</th>
                 <th scope="col">%Progress</th>
                 <th scope="col" class="text-center">Path</th>
             </tr>
@@ -29,7 +33,8 @@
         </tbody>
     </table>
 </body>
-<!-- <script type="text/javascript" src="./menu/report.js"> -->
-</script>
+
+
+
 
 </html>

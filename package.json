@@ -24,7 +24,7 @@
   },
   "scripts": {
     "start": "concurrently \"npm run start-electron\" \"npm run start-react\"",
-    "start-electron": "electron .",
+    "start-electron": "electron . --inspect",
     "start-react": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
