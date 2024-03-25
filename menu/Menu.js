@@ -1,7 +1,14 @@
-const { dialog, app, BrowserWindow } = require('electron');
+const { dialog, app, BrowserWindow, shell } = require('electron');
 
-// Creation of the mainWindow with specified WxH 
-function reportHistoryWindow() {
+function reloadWindows(focusedWindow){
+  if(focusedWindow){
+    BrowserWindow.getAllWindows().forEach(wind =>{
+      if(wind.id >=3){wind.close();}})}
+    } 
+
+
+function reportHistoryWindow(focusedWindow) {
+
     const mainWindow = new BrowserWindow({
         width: 600,
         height: 400,
@@ -19,17 +26,40 @@ function reportHistoryWindow() {
     mainWindow.webContents.openDevTools();
 }
 
+
 const template = [
   {
     label: 'Menu',
-    submenu: [{label: 'Exit', click: async () => {app.quit();},},],
+    submenu: [{label: 'Exit', click: async (_,focusedWindow) => {app.quit();},},],
   },
   {
     label: 'Reports',
-    submenu: [{label: 'Report History', click: async () => { 
-        await app.whenReady().then(()=>{reportHistoryWindow()})
+    submenu: [{label: 'Report History', click: async (_,focusedWindow) => { 
+        await app.whenReady().then(()=>{reportHistoryWindow(focusedWindow)})
     },},],
   },
+  {
+    label: 'View',
+    submenu: [{label: 'Reload', click: async (_,focusedWindow) => {reloadWindows(focusedWindow)},},
+    {
+      label: 'Developer Tools',
+      click: (_,focusedWindow) =>{
+        focusedWindow.toggleDevTools();
+      }
+    }
+  ],
+  },
+  {
+    label: 'Github',
+    role: 'help',
+    submenu: [{
+      label: 'Github Repository',
+      click: () => {
+        // shell is used to open browser
+        shell.openExternal('https://github.com/Dan88Hus/HDO_Download_Manager')
+      }
+    }]
+  }
 ];
 
 module.exports = template;
