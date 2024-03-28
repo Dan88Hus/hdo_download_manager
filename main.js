@@ -13,6 +13,7 @@ function createWindow() {
     const mainWindow = new BrowserWindow({
         width: 1200,
         height: 600,
+        icon: iconFav,
         webPreferences: {
             nodeIntegration: true,
             worldSafeExecuteJavascript: true,
@@ -31,13 +32,8 @@ function createWindow() {
       protocol: 'file:',
       slashes: true
     }));
-    
-    // mainWindow.on('closed', () => {
-    //   mainWindow = null;
-    // });
-
         // for dev tools
-        mainWindow.webContents.openDevTools();
+        // mainWindow.webContents.openDevTools();
 }
 
 
@@ -45,18 +41,13 @@ function createWindow() {
 app.on('ready',() => {
     // Create Menu
     const menuTray = Menu.buildFromTemplate(template);
-    Menu.setApplicationMenu(menuTray);
-    
+    Menu.setApplicationMenu(menuTray); 
     if(process.platform === 'win32'){
       tray = new Tray(iconFav);
       tray.setContextMenu(menuTray);
     }
-
-
     // Create window
     createWindow();
-
-
 });
 
 app.on('window-all-closed', () => {

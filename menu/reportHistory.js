@@ -2,14 +2,12 @@ const localStorageItems = window.localStorage.getItem('persist:root');
 //parse converts to object
 let objectUriItems = JSON.parse(JSON.parse(localStorageItems).uri);
 
-document.addEventListener('DOMContentLoaded', function(){
-    
+document.addEventListener('DOMContentLoaded', function(){   
     const tbody = document.getElementById("tbody");
-    
     if(localStorageItems){
         for (let i=0; i<objectUriItems.length; i++){
             let newRow = tbody.insertRow(i);
-            //id, gid...
+            //to gererate report data for status, progress, path fields
             for (let j = 0; j < 1; j++){
                 let newCell = newRow.insertCell(j);
                 let newText = objectUriItems[i].status ? document.createTextNode(`${objectUriItems[i].status}`) : document.createTextNode('waiting')

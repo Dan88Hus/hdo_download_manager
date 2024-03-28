@@ -1,3 +1,4 @@
+const path = require('path')
 const { dialog, app, BrowserWindow, shell } = require('electron');
 
 function reloadWindows(focusedWindow){
@@ -7,53 +8,49 @@ function reloadWindows(focusedWindow){
     } 
 
 
-function reportHistoryWindow(focusedWindow) {
-
+function reportHistoryWindow() {
     const mainWindow = new BrowserWindow({
         width: 600,
         height: 400,
+        icon: path.join(__dirname,'../','public','favicon.ico'),
         webPreferences: {
             nodeIntegration: true,
-            contentSecurityPolicy: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval';"
-            
+            contentSecurityPolicy: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval';" 
         },
     });
-
     // to load window in specified file instead of webPage
-
     mainWindow.loadFile('reportHistory.html');
-
-    mainWindow.webContents.openDevTools();
+    // mainWindow.webContents.openDevTools(); 
 }
 
 
 const template = [
   {
-    label: 'Menu',
-    submenu: [{label: 'Exit', click: async (_,focusedWindow) => {app.quit();},},],
+    label: 'File',
+    submenu: [{
+      label: 'Exit', click: async (_,focusedWindow) => {
+        app.quit();
+        },
+      },
+    ],
   },
   {
     label: 'Reports',
     submenu: [{label: 'Report History', click: async (_,focusedWindow) => { 
-        await app.whenReady().then(()=>{reportHistoryWindow(focusedWindow)})
+        await app.whenReady().then(()=>{
+          reportHistoryWindow(focusedWindow)})
     },},],
   },
   {
     label: 'View',
     submenu: [{label: 'Reload', click: async (_,focusedWindow) => {reloadWindows(focusedWindow)},},
-    {
-      label: 'Developer Tools',
-      click: (_,focusedWindow) =>{
-        focusedWindow.toggleDevTools();
-      }
-    }
-  ],
+    {label: 'Developer Tools', click: (_,focusedWindow) =>{focusedWindow.toggleDevTools();}}],
   },
   {
-    label: 'Github',
+    label: 'GitHub',
     role: 'help',
     submenu: [{
-      label: 'Github Repository',
+      label: 'GitHub Repository',
       click: () => {
         // shell is used to open browser
         shell.openExternal('https://github.com/Dan88Hus/HDO_Download_Manager')
