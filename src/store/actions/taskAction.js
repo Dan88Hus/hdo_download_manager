@@ -1,3 +1,4 @@
+// const axios = require('axios');
 import axios from "axios";
 const postMethod = 'post';
 const aria2Url = 'http://127.0.0.1:6800/jsonrpc';

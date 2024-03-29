@@ -1,7 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addUriAction } from "../store/actions/taskAction";
+// const { addUriAction } = require('../store/actions/taskAction.cjs');
+import { addUriAction } from "../store/actions/taskAction.js";
 import {toast} from 'react-toastify'
 
 function InputLink() {
@@ -25,6 +26,7 @@ function InputLink() {
             <form className="row m-1" onSubmit={handleSubmit}>
                 <div className="col">
                     <input type="url" className="form-control" 
+                        data-testid = "submitBtnInputLink"
                         placeholder="Enter the Link"
                         onChange={(e) => setLink(e.target.value)}
                         value={link}

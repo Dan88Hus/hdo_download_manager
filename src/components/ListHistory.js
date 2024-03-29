@@ -68,7 +68,10 @@ function ListHistory({uriMapped}){
                 <td className='text-center'>{uriMapped.progress}</td>
                 <td>{uriMapped.path}</td>
                 {/* Button pause */}
-                <td><button className='btn btn-light' onClick={(() => handlePause(uriMapped))}><i className="bi bi-pause-circle h6"></i></button></td>
+                <td><button 
+                data-testid = "actionBtnListHistoryPause"
+                className='btn btn-light' 
+                onClick={(() => handlePause(uriMapped))}><i className="bi bi-pause-circle h6"></i></button></td>
                 {/* Button resume */}
                 <td><button className='btn btn-light' onClick={(() => handleResume(uriMapped))}><i className="bi bi-play-fill h6"></i></button></td>
                 {/* Button stop */}
