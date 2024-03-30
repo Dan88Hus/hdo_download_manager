@@ -73,9 +73,9 @@ function ListHistory({uriMapped}){
                 className='btn btn-light' 
                 onClick={(() => handlePause(uriMapped))}><i className="bi bi-pause-circle h6"></i></button></td>
                 {/* Button resume */}
-                <td><button className='btn btn-light' onClick={(() => handleResume(uriMapped))}><i className="bi bi-play-fill h6"></i></button></td>
+                <td><button data-testid = "actionBtnListHistoryResume" className='btn btn-light' onClick={(() => handleResume(uriMapped))}><i className="bi bi-play-fill h6"></i></button></td>
                 {/* Button stop */}
-                <td><button className='btn btn-light' onClick={(() => handleStop(uriMapped))}><i className="bi bi-stop-circle h6"></i></button></td>
+                <td><button data-testid = "actionBtnListHistoryStop" className='btn btn-light' onClick={(() => handleStop(uriMapped))}><i className="bi bi-stop-circle h6"></i></button></td>
             </tr>
         </React.Fragment>
     )

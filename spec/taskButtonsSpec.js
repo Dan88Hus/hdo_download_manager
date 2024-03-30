@@ -7,23 +7,7 @@ const mockStore = configureMockStore([]);
 const store = mockStore({})
 
 
-describe('actions', () => {
-    it('should dispatch an action', () => {
-      const initialState = {}; // initial state for the store
-      const store = mockStore(initialState);
-  
-      // Dispatch your action
-      store.dispatch({ type: 'SOME_ACTION', payload: 'test' });
-  
-      // Get the actions that were dispatched
-      const actions = store.getActions();
-  
-      // Assert the actions
-      expect(actions).toEqual([{ type: 'SOME_ACTION', payload: 'test' }]);
-    });
-  });
-
-it('Is li tags greater than 1: ', () => {
+it('Is li Tags Greater Than 1?', () => {
     render(
         <Provider store={store}>
             <TaskButtons />

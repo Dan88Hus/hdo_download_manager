@@ -7,28 +7,22 @@ const mockStore = configureMockStore([]);
 const store = mockStore({})
 
 
-describe('actions', () => {
-    it('should dispatch an action', () => {
-      const initialState = {}; // initial state for the store
-      const store = mockStore(initialState);
-  
-      // Dispatch your action
-      store.dispatch({ type: 'SOME_ACTION', payload: 'test' });
-  
-      // Get the actions that were dispatched
-      const actions = store.getActions();
-  
-      // Assert the actions
-      expect(actions).toEqual([{ type: 'SOME_ACTION', payload: 'test' }]);
-    });
-  });
-
-it('If exist Submit Button', () => {
+it('Is Link Input Field Exist?', () => {
     render(
         <Provider store={store}>
             <InputLink />
         </Provider>
     );
-    const submitBtnInputLink = screen.getByTestId('submitBtnInputLink');
+    const inputFieldInputLink = screen.getByTestId('inputFieldInputLink');
+    expect(inputFieldInputLink).toEqual(jasmine.any(window.HTMLElement)) ;
+})
+
+it('Is Link Submit Button Exist?', () => {
+    render(
+        <Provider store={store}>
+            <InputLink />
+        </Provider>
+    );
+    const submitBtnInputLink = screen.getByRole('button');
     expect(submitBtnInputLink).toEqual(jasmine.any(window.HTMLElement)) ;
 })

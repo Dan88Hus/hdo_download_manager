@@ -26,7 +26,7 @@ function InputLink() {
             <form className="row m-1" onSubmit={handleSubmit}>
                 <div className="col">
                     <input type="url" className="form-control" 
-                        data-testid = "submitBtnInputLink"
+                        data-testid = "inputFieldInputLink"
                         placeholder="Enter the Link"
                         onChange={(e) => setLink(e.target.value)}
                         value={link}
@@ -34,7 +34,7 @@ function InputLink() {
                     </input>
                 </div>
                 <div className="col-auto">
-                    <button type="submit" 
+                    <button type="submit"
                         className="btn btn-success mb-3">
                             Start Download
                         </button>
