@@ -4,7 +4,8 @@ const url = require('url');
 const path = require('path');
 const template = require('./menu/Menu');
 const iconPng = path.join(__dirname,'public','favIcoPng256x256.png');
-const iconFav = path.join(__dirname,'public','favicon.ico');
+// const iconFav = path.join(__dirname,'public','favicon.ico');
+const iconFav = "E:\\BackupWindowsD\\Thesis\\MyThesis\\hdo_download_manager\\public\\favicon.ico";
 
 
 
