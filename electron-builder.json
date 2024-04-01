@@ -16,6 +16,15 @@
     "win": {
       "target": "nsis"
     },
+    "mac": {
+      "target": "dmg"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    },
     "extraMetadata": {
         "main": "main.js"
     }
