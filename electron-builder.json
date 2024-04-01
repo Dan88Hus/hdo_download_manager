@@ -1,0 +1,20 @@
+{
+    "appId": "com.hdo.downloadmanager",
+    "productName": "HDO Download Manager",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "build/**/*",
+      "assets/**/*",
+      "menu/**/*",
+      "src/**/*",
+      "main.js",
+      "index.html",
+      "reportHistory.html"
+    ],
+    "win": {
+      "target": "nsis"
+    }
+  }
+  
