@@ -11,6 +11,10 @@ first run build command
 ```npm run build```
 then 
 ```npm run dist```
+### to run jasmine test
+```npx jasmine``` or ```npm test```
+### to run sloc test
+```npx sloc . -e "node_modules, build" -f csv -d```
 
 # Getting Started with Create React App
 
